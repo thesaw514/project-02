@@ -1,8 +1,6 @@
-/* Theodore Sawyer, FEND - Project 02: 'Memory Game' / index.html / 06.18.18 */
+/* Theodore Sawyer, FEND - Project 02: 'Memory Game' / app.css / 06.30.18 */
 
-html {
-    box-sizing: border-box;
-}
+html { box-sizing: border-box; }
 
 *,
 *::before,
@@ -31,14 +29,11 @@ body {
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Coda', cursive;
+    font-weight: 100;
 }
 
-/*
- * Styles for the deck of cards
- */
-
+/* Styles for the deck of cards */
 .deck {
     width: 660px;
     min-height: 680px;
@@ -83,12 +78,9 @@ h1 {
     font-size: 33px;
 }
 
-/*
- * Styles for the Score Panel
- */
-
+/* Styles for the Score Panel */
 .score-panel {
-    text-align: left;
+    text-align: center;
     width: 345px;
     margin-bottom: 10px;
 }
@@ -97,6 +89,7 @@ h1 {
     margin: 0;
     padding: 0;
     display: inline-block;
+    font-size: 1.2rem;
     margin: 0 5px 0 0;
 }
 
@@ -106,6 +99,92 @@ h1 {
 }
 
 .score-panel .restart {
-    float: right;
+    /* float: right; */
+    /* cursor: pointer; */
+
+    /* added 06.24.18 */
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 0 0 0 10px;
+}
+
+/* added 06.24.18 */
+.moves {
+    font-family: 'Coda', cursive;
+    font-size: 1.2rem;
+    margin: 0 5px 0 5px;
+}
+
+/* added 06.24.18 */
+.matches {
+    font-family: 'Coda', cursive;
+    font-size: 1.2rem;
+    margin: 0 5px 0 5px;
+}
+
+/* added 06.24.18 */
+.time {
+    display: inline-block;
+    font-family: 'Coda', cursive;
+    font-weight: bold; font-size: 1.8rem;
+    margin-bottom: 16px;
+}
+
+/* added 06.27.18 */
+/* End Game Modal Popup */
+.modal-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.438);
+}
+
+.modal-hide { display: none; }
+
+.modal-popup {
+    position: relative;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    background: linear-gradient(to right, transparent, #02ccba, #aa7ecd), url('../img/geometry2.png');
+    transform: translate(-50%, -114%);
+    cursor: pointer;
+}
+
+.modal-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid gray;
+}
+
+.modal-close {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.modal-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+}
+
+.modal-btns {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.modal-btn {
+    font-family: 'Coda', cursive;
+    font-size: 1rem;
+    width: 100px;
+    height: 30px;
     cursor: pointer;
 }
