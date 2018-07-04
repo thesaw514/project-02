@@ -73,8 +73,13 @@ function matchCount () {
 
 // added 06.24.18
 function gameTime() {
+
+    // added 07.03.18
+    document.querySelector('.deck').removeEventListener('click', gameTime);
+    
     clockID = setInterval(function timer() {
         time++;
+        console.log(time);
         timeDisplay();
     }, 1000);
 }
@@ -134,14 +139,13 @@ function resetGame() {
 
     initGame();
     resetStars();
-    gameTime();
 }
 
 //added 06.27.18
 function replayGame() {
 
     document.querySelector('.deck').removeEventListener('click', modalPopup);
-    
+
     moves = 0;
     matches = 0;
 
@@ -151,7 +155,6 @@ function replayGame() {
 
     initGame();
     resetStars();
-    gameTime();
     modalPopup();
 }
 
@@ -170,21 +173,22 @@ function initGame() {
     const allCards = document.querySelectorAll('.card');
     let openCards = []; //openCards.length
 
-    gameTime();
+    // added 07.03.18
+    deck.addEventListener('click', gameTime);
 
 // Flip cards
 allCards.forEach(function (card) {
+
     card.addEventListener('click', function (e) {
-
-        if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {
-
+        
+        if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {;
             openCards.push(card);
             card.classList.add('open', 'show');
 
             // Check + show cards - if match
             if (openCards.length == 2) {
                 if (openCards[0].dataset.card === openCards[1].dataset.card) {
-                    
+
                     openCards[0].classList.add('match');
                     openCards[0].classList.add('open');
                     openCards[0].classList.add('show');
@@ -201,14 +205,14 @@ allCards.forEach(function (card) {
 
                     // added 06.26.18
                     matchCount();
-                    
+
                 } else {
 
                     // If cards don't match - hide
                     setTimeout(function () {
                         openCards.forEach(function (card) {
                             card.classList.remove('open', 'show');
-                        }); 
+                        });
                         openCards = [];
                     }, 500);
 
@@ -259,7 +263,7 @@ function modalSummary() {
     const timeSummary = document.querySelector('.modal-time');
     const clockSummary = document.querySelector('.time').innerText;
     const moveSummary = document.querySelector('.modal-moves');
-    
+
     // added 06.27.18
     const starsStat = document.querySelector('.modal-stars');
     const stars = getStars();
@@ -267,7 +271,7 @@ function modalSummary() {
      // added 06.27.18
     timeSummary.innerHTML = `Time = ${clockSummary}`;
     moveSummary.innerHTML = `Moves = ${moves}`;
-    
+
     // added 06.27.18
     starsStat.innerHTML = `Stars = ${stars}`;
 }
